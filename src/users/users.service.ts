@@ -12,11 +12,11 @@ export class UsersService {
   async create(createUserDto: CreateUserDto) {
     createUserDto.password = await this.userHash(createUserDto.password);
 
-    this.userModel.create(createUserDto);
+    await this.userModel.create(createUserDto);
   }
 
-  findOne(username: string) {
-    const findedUser = this.userModel.findOne({ username: username });
+  async findOne(username: string) {
+    const findedUser = await this.userModel.findOne({ username: username });
     return findedUser;
   }
 

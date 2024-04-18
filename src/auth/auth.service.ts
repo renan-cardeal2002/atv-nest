@@ -12,6 +12,7 @@ export class AuthService {
 
   async signIn(username: string, pass: string): Promise<any> {
     const user = await this.usersService.findOne(username);
+    console.log(user, username)
 
     const isMath = await bcrypt.compare(pass, user.password);
 
